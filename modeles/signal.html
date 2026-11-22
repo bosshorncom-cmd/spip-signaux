@@ -1,0 +1,26 @@
+[(#REM)
+	Modèle <signal> : dessine un signal sonore (corne, sifflet, klaxon) à l'échelle.
+	Paramètres :
+	  motif  : suite de sons séparés par des espaces, "-" (ou L) = son long, "o" (ou S) = son bref.
+	           Défaut : "- - o -" (signal de passage à niveau aux États-Unis).
+	  court  : durée d'un son bref en secondes (défaut 1)
+	  long   : durée d'un son long en secondes (défaut 3)
+	  titre  : légende facultative
+	Exemples :
+	  <signal1|motif=o o o o o|long=5|titre=Doute ou danger (RIPAM règle 34 d)>
+	  <signal1|motif=- - o ->
+]
+#SET{court,#ENV{court,1}}
+#SET{long,#ENV{long,3}}
+#SET{motif,#ENV{motif,'- - o -'}|trim|replace{'\s+',' '}}
+<span class="signal-sonore" title="[(#GET{motif})]">
+	<span class="signal-sonore-barres">
+	<BOUCLE_sons(DATA){source tableau, #GET{motif}|explode{' '}}>
+		#SET{est_long,#VALEUR|in_array{#LISTE{-,L,l}}}
+		<span class="signal-sonore-son [(#GET{est_long}|?{signal-sonore-long,signal-sonore-bref})]"
+			style="flex-grow:[(#GET{est_long}|?{#GET{long},#GET{court}})]"></span>
+		[(#COMPTEUR_BOUCLE|<{#TOTAL_BOUCLE}|oui)<span class="signal-sonore-pause"></span>]
+	</BOUCLE_sons>
+	</span>
+	[<span class="signal-sonore-legende">(#ENV{titre})</span>]
+</span>

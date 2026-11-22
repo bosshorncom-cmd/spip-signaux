@@ -1,0 +1,5 @@
+.signal-sonore{display:inline-flex;flex-direction:column;vertical-align:middle;width:16em;max-width:100%;margin:.2em 0}
+.signal-sonore-barres{display:flex;align-items:center;height:1em;gap:0}
+.signal-sonore-son{display:block;height:.7em;background:#b3261e;border-radius:3px;flex-basis:0}
+.signal-sonore-pause{display:block;flex:1 0 0;height:.7em}
+.signal-sonore-legende{font-size:.85em;color:#666}

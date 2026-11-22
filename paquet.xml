@@ -1,0 +1,13 @@
+<paquet
+	prefix="signaux"
+	categorie="multimedia"
+	version="1.0.0"
+	etat="test"
+	compatibilite="[4.0.0;4.4.*]"
+	documentation="https://github.com/bosshorncom-cmd/spip-signaux"
+>
+	<nom>Signaux sonores</nom>
+	<auteur lien="https://github.com/bosshorncom-cmd">Train Horns Lab</auteur>
+	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GNU/GPL v3</licence>
+	<pipeline nom="insert_head_css" inclure="signaux_pipelines.php" />
+</paquet>
